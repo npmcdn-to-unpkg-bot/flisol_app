@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Flisol comics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Comics Flisol</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search comic">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- /navbar -->
+
+<!-- content -->
+<div class="container">
+  <input type="text" placeholder="Ingresa tu nombre" ng-model="name">
+  <blockquote>
+    Hola {{name}}
+  </blockquote>
+</div>
+<!--/ content -->
+
+<!-- footer -->
+<footer>
+  <div class="container">
+    <span>Taller de <a href="https://angularjs.org">angular.js</a></span>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- scripts -->
+<script src="js/lib/angular.js"></script>
+<!-- /scripts -->
+</body>
+</html>
