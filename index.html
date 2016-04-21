@@ -29,7 +29,7 @@
 <!-- content -->
 <div class="container" ng-controller="comicController as comicCtrl">
     <h2>{{comicCtrl.comic.name}}</h2>
-    <img src="img/{{comicCtrl.comic.thumbnail}}" width="20%" alt="">
+    <a href="#"><img src="img/{{comicCtrl.comic.thumbnail}}" width="20%" alt=""></a>
     <span>${{comicCtrl.comic.price}}</span>
     <p>{{comicCtrl.comic.description}}</p>
 </div>
