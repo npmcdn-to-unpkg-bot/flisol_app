@@ -12,7 +12,7 @@
   <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Comics Flisol</a>
+      <a class="navbar-brand" href="/#/">Comics Flisol</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" role="search">
@@ -26,25 +26,8 @@
 <!-- /navbar -->
 
 <!-- content -->
-<div class="container" ng-controller="comicController as comicCtrl">
-    <div class="row">
-        <div class="col-sm-4 item-comic">
-          <a href="#" class="thumbnail">
-            <img src="img/{{comicCtrl.comic.thumbnail}}" class="img-responsive" alt="">
-            <div class="caption">
-              <div class="row">
-                <div class="col-sm-6"><h3>{{comicCtrl.comic.name}}</h3></div>
-                <div class="col-sm-6"><span class="label label-info">${{comicCtrl.comic.price}}</span></div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <p>{{comicCtrl.comic.description}}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-    </div>
+<div class="container">
+  <div ng-view></div>
 </div>
 <!--/ content -->
 
@@ -58,6 +41,7 @@
 
 <!-- scripts -->
 <script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-route.js"></script>
 <script src="js/app.js"></script>
 <!-- /scripts -->
 </body>
