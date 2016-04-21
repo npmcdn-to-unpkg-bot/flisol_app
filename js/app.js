@@ -9,5 +9,4 @@ app.controller('comicController',[function(){
         "description": "Esta es la descripción de el comic de Deadpool",
         "thumbnail": "deadpool.jpg"
     };
-    console.log(this.comic);
 }])

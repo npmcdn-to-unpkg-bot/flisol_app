@@ -19,7 +19,6 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search comic">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
       </form>
     </div>
   </div>
@@ -28,10 +27,24 @@
 
 <!-- content -->
 <div class="container" ng-controller="comicController as comicCtrl">
-    <h2>{{comicCtrl.comic.name}}</h2>
-    <a href="#"><img src="img/{{comicCtrl.comic.thumbnail}}" width="20%" alt=""></a>
-    <span>${{comicCtrl.comic.price}}</span>
-    <p>{{comicCtrl.comic.description}}</p>
+    <div class="row">
+        <div class="col-sm-4 item-comic">
+          <a href="#" class="thumbnail">
+            <img src="img/{{comicCtrl.comic.thumbnail}}" class="img-responsive" alt="">
+            <div class="caption">
+              <div class="row">
+                <div class="col-sm-6"><h3>{{comicCtrl.comic.name}}</h3></div>
+                <div class="col-sm-6"><span class="label label-info">${{comicCtrl.comic.price}}</span></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p>{{comicCtrl.comic.description}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+    </div>
 </div>
 <!--/ content -->
 

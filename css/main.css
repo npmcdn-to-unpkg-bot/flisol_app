@@ -2,6 +2,26 @@
   border-radius: 0 !important;
 }
 
+.item-comic{
+  text-align: center;
+}
+
+img{
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+a{
+  text-decoration: none;
+}
+
+.label{
+  display: block;
+  width: 50px;
+  margin: 28px auto;
+}
+
 footer{
   background: #fefefe;
   border-top:1px solid #dedede;
