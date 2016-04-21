@@ -16,7 +16,7 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
       });
 }])
 //Controladores de la aplicacion
-.controller('comicController',['$scope', function($scope){
+.controller('comicController',['$scope', '$http', function($scope, $http){
     $scope.comic = {
         "id": "001",
         "name": "Deadpool",
@@ -24,6 +24,14 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
         "description": "Esta es la descripción de el comic de Deadpool",
         "thumbnail": "deadpool.jpg"
     };
+
+    $http.get('../comics.json')
+      .success(function(data){
+        console.log(data);
+        $scope.data= data;
+      }).error(function(error){
+        console.log(error);
+      });
 }])
 
 .controller('infoController',['$scope', '$routeParams', function($scope, $routeParams){
