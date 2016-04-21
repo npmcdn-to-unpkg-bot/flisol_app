@@ -5,9 +5,6 @@
 footer{
   background: #fefefe;
   border-top:1px solid #dedede;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 footer span{
