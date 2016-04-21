@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="col-sm-6"  ng-repeat="comics in data">
+    <div class="col-sm-6"  ng-repeat="comics in data | filter:search">
         <div class="item-comic">
           <a href="/#/comic/{{comics.name}}" class="thumbnail">
             <img src="img/{{comics.thumbnail}}" class="img-responsive" alt="">
             <div class="caption">
               <div class="row">
                 <div class="col-sm-6"><h3>{{comics.name}}</h3></div>
-                <div class="col-sm-6"><span class="label label-info">${{comics.price}}</span></div>
+                <div class="col-sm-6"><span class="label label-info">{{comics.price | currency}}</span></div>
               </div>
               <div class="row">
                 <div class="col-sm-12">
