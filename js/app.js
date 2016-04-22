@@ -1,7 +1,7 @@
 var app = angular.module('appFlisol', ['ngRoute']);
 
 
-app.config(['$routeProvider', function($routeProvider){ //esta es la configuración de el roter
+app.config(['$routeProvider', function($routeProvider){ //esta es la configuración de el router
   $routeProvider
     .when('/',{
       templateUrl: 'views/comics.html',
@@ -43,3 +43,18 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
     getAll : getAll
   };
 }])
+
+//directivas de la aplicacion
+.directive('blockDescription', function(){
+    return{
+        restrict : 'E',
+        templateUrl: 'partials/block-description.html'
+    };
+})
+
+.directive('blockComments', function(){
+    return{
+        restrict: 'E',
+        templateUrl: 'partials/block-comments.html'
+    };
+})
