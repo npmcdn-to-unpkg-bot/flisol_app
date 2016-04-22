@@ -26,14 +26,14 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
 .controller('infoController',['$scope', '$routeParams','comicsServices', function($scope, $routeParams, comicsServices){
   var id = $routeParams.id;
   $scope.comic = {};
-  console.log(id);
   comicsServices.getComic(id).then(function(data){
     $scope.comic = data;
-  });
+  });;
 }])
 
 //services para la app
-.factory('comicsServices',['$q','$http', function($q,$http){
+.factory('comicsServices',['$q','$http','$window', function($q,$http, $window){
+  var localStorage = $window.localStorage;
   function getAll(){
     var deferred = $q.defer();
     $http.get('../comics.json')
@@ -60,9 +60,27 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
     return deferred.promise;
   }
 
+  function saveComment(id, comment){
+    var comments = getComments(id);
+    comments.push(comment);
+    localStorage.setItem(id, JSON.stringify(comments));
+  }
+
+  function getComments(id){
+    var comments = localStorage.getItem(id);
+    if(!comments){
+      comments=[];
+    }else{
+      comments = JSON.parse(comments);
+    }
+    return comments;
+  }
+
   return {
     getAll : getAll,
-    getComic : getComic
+    getComic : getComic,
+    saveComment : saveComment,
+    getComments : getComments
   };
 }])
 
@@ -75,9 +93,28 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
     };
 })
 
-.directive('blockComments', function(){
+.directive('blockComments', ['comicsServices',function(comicsServices){
     return{
         restrict: 'E',
-        templateUrl: 'partials/block-comments.html'
+        templateUrl: 'partials/block-comments.html',
+        scope:{ id : '@id'},
+        link: function(scope, element, attributes){
+          attributes.$observe('id', function(value){
+            if(value){
+              scope.id = value;
+              scope.comments = comicsServices.getComments(value);
+            }
+          });
+        },
+        controller: function($scope){
+          $scope.comment = {};
+          $scope.comments = comicsServices.getComments($scope.id);
+          $scope.addComment = function(){
+            $scope.comment.date = Date.now();
+            comicsServices.saveComment($scope.id, $scope.comment);
+            $scope.comments = comicsServices.getComments($scope.id);
+            $scope.comment = {};
+          };
+        }
     };
-})
+}])

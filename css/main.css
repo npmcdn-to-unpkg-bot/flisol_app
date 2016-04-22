@@ -35,3 +35,20 @@ footer span{
 .block-comments{
   margin-top: 80px;
 }
+
+
+.form .row{
+  margin-bottom: 20px;
+}
+
+input .ng-ivalid,
+textarea .ng-ivalid{
+  border:1px solid red;
+  border-radius: 5px;
+}
+
+input .ng-valid,
+textarea .ng-valid{
+  border: 1px solid green;
+  border-radius: 5px;
+}
