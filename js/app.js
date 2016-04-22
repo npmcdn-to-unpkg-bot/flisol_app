@@ -28,7 +28,7 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
   $scope.comic = {};
   comicsServices.getComic(id).then(function(data){
     $scope.comic = data;
-  });;
+  });
 }])
 
 //services para la app
