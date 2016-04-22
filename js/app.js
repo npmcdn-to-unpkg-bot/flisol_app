@@ -7,7 +7,7 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
       templateUrl: 'views/comics.html',
       controller: 'comicController'
     })
-    .when('/comic/:name', {
+    .when('/comic/:id', {
       templateUrl: 'views/comic-info.html',
       controller: 'infoController'
     })
@@ -23,8 +23,13 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
     });
 }])
 
-.controller('infoController',['$scope', '$routeParams', function($scope, $routeParams){
-  $scope.name = $routeParams.name;
+.controller('infoController',['$scope', '$routeParams','comicsServices', function($scope, $routeParams, comicsServices){
+  var id = $routeParams.id;
+  $scope.comic = {};
+  console.log(id);
+  comicsServices.getComic(id).then(function(data){
+    $scope.comic = data;
+  });
 }])
 
 //services para la app
@@ -35,14 +40,32 @@ app.config(['$routeProvider', function($routeProvider){ //esta es la configuraci
       .success(function(data){
         deferred.resolve(data);
       }).error(function(error){
-        deferred.reject(error);
+        deferred.reject();
       });
     return deferred.promise;
   }
+
+  function getComic(id){
+    var deferred = $q.defer();
+    getAll().then(function(data){
+      var results = data.filter(function(comic){
+        return comic.id === id;
+      });
+      if(results.length > 0){
+        deferred.resolve(results[0]);
+      }else{
+        deferred.reject();
+      }
+    });
+    return deferred.promise;
+  }
+
   return {
-    getAll : getAll
+    getAll : getAll,
+    getComic : getComic
   };
 }])
+
 
 //directivas de la aplicacion
 .directive('blockDescription', function(){
