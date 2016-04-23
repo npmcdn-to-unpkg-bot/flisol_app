@@ -6,7 +6,7 @@ Desarrollo de una aplicación web hecha con el framework angular.js
 
 Lista de temas que se verán
 
-1.Descargar las librerias de angular en la pagina de angular.js (https://angularjs.org/) probar y definir una app angular. Usaremos un framework de css en esta caso uno de los temas que tiene boostrap en el sitio (https://bootswatch.com)
+1. Descargar las librerias de angular en la pagina de angular.js (https://angularjs.org/) probar y definir una app       angular. Usaremos un framework de css en esta caso uno de los temas que tiene boostrap en el sitio (https://bootswatch.com)
 
 2. Controladores y $scope
 3. Router que es y cómo funciona
