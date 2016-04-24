@@ -1,0 +1,37 @@
+<div class="block-comments">
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Comment</h3>
+      </div>
+      <div class="panel-body">
+        <form name="commentsForm" class="form-horizontal form" role="form" ng-submit="commentsForm.$valid && addComment()" novalidate>
+          <div class="form-group container">
+            <div class="row">
+              <div class="col-sm-4">
+                <input ng-model="comment.email" ng-disabled="comment.anonymous" type="email" placeholder="Ingresa tu email" class="form-control" ng-required="!comment.anonymous">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <textarea ng-model="comment.body" placeholder="Comentarios de este comic" class="form-control" required></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Comment</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <blockquote ng-repeat="comment in comments">
+          <p>{{comment.body}}</p>
+          <div class="footer">
+            Comment by
+            <a href="mailto:{{comment.email}}">{{comment.email}}</a> on <span>{{comment.date | date : medium}}</span>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
